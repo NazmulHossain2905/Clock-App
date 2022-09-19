@@ -31,6 +31,8 @@ function App() {
 
     let amPm = hours < 12 ? 'AM' : 'PM';
 
+    hours = hours > 12 ? hours - 12 : hours;
+
     hours = hours < 10 ? '0' + hours : hours;
     minutes = minutes < 10 ? '0' + minutes : minutes;
     seconds = seconds < 10 ? '0' + seconds : seconds;
@@ -61,12 +63,12 @@ function App() {
   };
 
   React.useEffect(() => {
-    let intervalId = setInterval(() => getTime(), 1000);
-
-    return () => {
-      console.log('Exit ------');
-      clearInterval(intervalId);
-    };
+    setInterval(() => getTime(), 1000);
+    // let intervalId = setInterval(() => getTime(), 1000);
+    // return () => {
+    //   console.log('Exit ------');
+    //   clearInterval(intervalId);
+    // };
   }, []);
 
   return (
